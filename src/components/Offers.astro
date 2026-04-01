@@ -3,39 +3,41 @@ const offers = [
   {
     tier: "Quick Fix",
     title: "Text Consultation",
-    price: "Ask",
-    period: "per session",
+    price: "$25",
+    period: "30 min",
     description: "Chat-based guidance with message analysis. Send me the conversation — I'll tell you exactly what to say next.",
     features: [
       "Message & chat analysis",
       "Texting strategy",
       "Situational advice",
-      "Response within 24h",
+      "Response within 1h",
       "Follow-up guidance"
     ],
     cta: "Start Chat",
+    ctaLink: "https://t.me/golovchenko_vi",
     highlight: false
   },
   {
     tier: "Deep Dive",
     title: "1-on-1 Call",
-    price: "Ask",
+    price: "$100",
     period: "per session",
     description: "A live strategy session where we dissect your situation and build a step-by-step action plan.",
     features: [
       "60-min video/voice call",
       "Personalized strategy",
-      "Body language coaching",
+      "Situation breakdown and analysis",
       "Mindset recalibration",
-      "Recorded for your review"
+      "Action plan in PDF format"
     ],
     cta: "Book a Call",
+    ctaLink: "https://t.me/golovchenko_vi",
     highlight: true
   },
   {
     tier: "Full Access",
     title: "Monthly Guidance",
-    price: "Ask",
+    price: "$1000",
     period: "per month",
     description: "Your personal wingman on speed dial. Full guidance, skill upgrades, and real-time help whenever you need it.",
     features: [
@@ -46,14 +48,14 @@ const offers = [
       "Priority response 24/7"
     ],
     cta: "Apply Now",
+    ctaLink: "https://t.me/golovchenko_vi",
     highlight: false
   }
 ];
 ---
 
-<section id="offers" class="relative py-32 overflow-hidden" aria-labelledby="offers-heading">
+<section id="offers" class="relative pt-16 pb-16 overflow-hidden" aria-labelledby="offers-heading">
   <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg-card/20 to-bg"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,7,123,0.06)_0%,transparent_60%)]"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6">
     <div class="text-center mb-20 reveal">
@@ -72,6 +74,7 @@ const offers = [
             ? "border-accent/40 bg-gradient-to-b from-accent/10 via-bg-card/80 to-bg-card/50 shadow-[0_0_60px_rgba(255,7,123,0.1)]"
             : "border-white/5 bg-bg-card/30 hover:border-accent/20"
         ]}>
+
           {offer.highlight && (
             <div class="absolute -top-4 left-1/2 -translate-x-1/2">
               <span class="px-5 py-1.5 bg-accent text-white text-xs font-bold tracking-[0.15em] uppercase rounded-full shadow-[0_0_20px_rgba(255,7,123,0.4)]">
@@ -87,8 +90,8 @@ const offers = [
 
           <div class="mb-6">
             <div class="flex items-baseline gap-1">
-              <span class="text-4xl lg:text-5xl font-black text-accent">{offer.price}</span>
-              <span class="text-white/50 text-sm">/ {offer.period}</span>
+              <span class="text-2xl lg:text-3xl font-black text-white">{offer.price}</span>
+              <span class="text-[#ff087b] text-base">/ {offer.period}</span>
             </div>
           </div>
 
@@ -106,7 +109,9 @@ const offers = [
           </ul>
 
           <a
-            href="#contact"
+            href={offer.ctaLink || "#contact"}
+            target={offer.ctaLink ? "_blank" : undefined}
+            rel={offer.ctaLink ? "noopener noreferrer" : undefined}
             class:list={[
               "block text-center py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-500",
               offer.highlight
