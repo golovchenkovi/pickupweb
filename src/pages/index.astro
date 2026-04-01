@@ -7,27 +7,24 @@ import Services from '../components/Services.astro';
 import Offers from '../components/Offers.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
 import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
 
 const siteUrl = "https://pickupmaster.pro";
 
 const schemaWebSite = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Pickupmaster",
+  name: "InJamWeLOVE",
   url: siteUrl,
-  description: "Premium relationship consulting for men who refuse to settle.",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
+  description: "Premium relationship consulting for men who refuse to settle."
 };
 
 const schemaPerson = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Pickupmaster",
+  name: "InJamWeLOVE",
   url: siteUrl,
   jobTitle: "Relationship Consultant",
   description: "Premium relationship coach helping men master dating, attraction, and complex relationship situations.",
@@ -39,15 +36,16 @@ const schemaPerson = {
     "Conflict Resolution"
   ],
   sameAs: [
-    "https://t.me/",
-    "https://instagram.com/"
+    "https://t.me/golovchenko_vi",
+    "https://instagram.com/golovchenko_vi",
+    "https://wa.me/375299020323"
   ]
 };
 
 const schemaProfessionalService = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Pickupmaster — Premium Relationship Consulting",
+  name: "InJamWeLOVE — Premium Relationship Consulting",
   url: siteUrl,
   description: "Expert 1-on-1 relationship consulting for men. Text consultations, personal calls, and monthly guidance subscriptions.",
   priceRange: "$$",
@@ -100,8 +98,8 @@ const schemaProfessionalService = {
   },
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "500",
+    ratingValue: "5",
+    reviewCount: "3",
     bestRating: "5",
     worstRating: "1"
   }
@@ -119,7 +117,7 @@ const schemaServices = {
         "@type": "Service",
         name: "Meet & Communicate",
         description: "Learn how to approach, open, and hold captivating conversations that make her want more.",
-        provider: { "@type": "Person", name: "Pickupmaster" }
+        provider: { "@type": "Person", name: "InJamWeLOVE" }
       }
     },
     {
@@ -129,7 +127,7 @@ const schemaServices = {
         "@type": "Service",
         name: "Magnetic Mindset",
         description: "Build the inner frame that makes women feel safe, excited, and addicted to your energy.",
-        provider: { "@type": "Person", name: "Pickupmaster" }
+        provider: { "@type": "Person", name: "InJamWeLOVE" }
       }
     },
     {
@@ -139,7 +137,7 @@ const schemaServices = {
         "@type": "Service",
         name: "Complex Relationship Situations",
         description: "Navigating jealousy, mixed signals, breakups, or love triangles — solved with surgical precision.",
-        provider: { "@type": "Person", name: "Pickupmaster" }
+        provider: { "@type": "Person", name: "InJamWeLOVE" }
       }
     },
     {
@@ -149,7 +147,7 @@ const schemaServices = {
         "@type": "Service",
         name: "Make Her Fall in Love",
         description: "Deep emotional connection strategies that create lasting desire beyond surface attraction.",
-        provider: { "@type": "Person", name: "Pickupmaster" }
+        provider: { "@type": "Person", name: "InJamWeLOVE" }
       }
     },
     {
@@ -159,7 +157,7 @@ const schemaServices = {
         "@type": "Service",
         name: "Creative Problem Solving",
         description: "Unconventional relationship problems require unconventional strategies nobody else would think of.",
-        provider: { "@type": "Person", name: "Pickupmaster" }
+        provider: { "@type": "Person", name: "InJamWeLOVE" }
       }
     },
     {
@@ -169,7 +167,7 @@ const schemaServices = {
         "@type": "Service",
         name: "Any Situation Handling",
         description: "No matter how unusual or impossible it seems — there is always a move to make.",
-        provider: { "@type": "Person", name: "Pickupmaster" }
+        provider: { "@type": "Person", name: "InJamWeLOVE" }
       }
     }
   ]
@@ -188,7 +186,7 @@ const schemaReviews = {
         author: { "@type": "Person", name: "Alex K." },
         reviewBody: "I went from getting ghosted constantly to having three women competing for my attention. The mindset shift alone was worth 10x the investment.",
         reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        itemReviewed: { "@type": "ProfessionalService", name: "Pickupmaster" }
+        itemReviewed: { "@type": "ProfessionalService", name: "InJamWeLOVE" }
       }
     },
     {
@@ -199,7 +197,7 @@ const schemaReviews = {
         author: { "@type": "Person", name: "Mark D." },
         reviewBody: "He doesn't just tell you what to say — he rewires how you think about yourself. I finally understand what confidence actually means.",
         reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        itemReviewed: { "@type": "ProfessionalService", name: "Pickupmaster" }
+        itemReviewed: { "@type": "ProfessionalService", name: "InJamWeLOVE" }
       }
     },
     {
@@ -210,7 +208,7 @@ const schemaReviews = {
         author: { "@type": "Person", name: "James R." },
         reviewBody: "Saved my marriage. I was ready to give up, but one session changed everything. The strategies are surgical — precise, effective, immediate.",
         reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        itemReviewed: { "@type": "ProfessionalService", name: "Pickupmaster" }
+        itemReviewed: { "@type": "ProfessionalService", name: "InJamWeLOVE" }
       }
     }
   ]
@@ -266,10 +264,10 @@ const schemaFAQ = {
 const schemaWebPage = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Pickupmaster — Premium Relationship Consulting",
+  name: "InJamWeLOVE — Premium Relationship Consulting",
   description: "Premium relationship consulting for men who refuse to settle. Master attraction, build confidence, and turn every interaction into an opportunity.",
   url: siteUrl,
-  isPartOf: { "@type": "WebSite", name: "Pickupmaster", url: siteUrl },
+  isPartOf: { "@type": "WebSite", name: "InJamWeLOVE", url: siteUrl },
   about: { "@type": "Thing", name: "Relationship Consulting for Men" },
   speakable: {
     "@type": "SpeakableSpecification",
@@ -298,18 +296,20 @@ const allSchemas = [
 ---
 
 <BaseLayout
-  title="Pickupmaster — Premium Relationship Consulting"
+  title="InJamWeLOVE — Premium Relationship Consulting"
   description="Premium relationship consulting for men who refuse to settle. Master attraction, build confidence, and turn every interaction into an opportunity."
   schema={allSchemas}
 >
   <Header />
-  <main>
+  <main id="main-content">
     <Hero />
     <ValueProposition />
     <Services />
     <Offers />
     <Testimonials />
     <CTA />
+    <FAQ />
     <ContactForm />
   </main>
+  <Footer />
 </BaseLayout>

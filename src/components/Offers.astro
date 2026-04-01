@@ -51,14 +51,14 @@ const offers = [
 ];
 ---
 
-<section id="offers" class="relative py-32 overflow-hidden">
+<section id="offers" class="relative py-32 overflow-hidden" aria-labelledby="offers-heading">
   <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg-card/20 to-bg"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,7,123,0.06)_0%,transparent_60%)]"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6">
     <div class="text-center mb-20 reveal">
       <span class="text-accent text-sm font-semibold tracking-[0.2em] uppercase">Invest in Yourself</span>
-      <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mt-4 tracking-tight">
+      <h2 id="offers-heading" class="text-4xl sm:text-5xl md:text-6xl font-black mt-4 tracking-tight">
         CHOOSE YOUR<br />
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-light">LEVEL UP</span>
       </h2>
@@ -88,16 +88,16 @@ const offers = [
           <div class="mb-6">
             <div class="flex items-baseline gap-1">
               <span class="text-4xl lg:text-5xl font-black text-accent">{offer.price}</span>
-              <span class="text-white/30 text-sm">/ {offer.period}</span>
+              <span class="text-white/50 text-sm">/ {offer.period}</span>
             </div>
           </div>
 
-          <p class="text-white/40 text-sm leading-relaxed mb-8">{offer.description}</p>
+          <p class="text-white/60 text-sm leading-relaxed mb-8">{offer.description}</p>
 
           <ul class="space-y-3 mb-10 flex-grow">
             {offer.features.map((feature) => (
               <li class="flex items-center gap-3 text-sm text-white/60">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent shrink-0" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
                 {feature}
