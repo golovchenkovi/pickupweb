@@ -2,9 +2,16 @@
 interface Props {
   title: string;
   description?: string;
+  schema?: Record<string, any>[];
 }
 
-const { title, description = "Premium relationship consulting for men who refuse to settle." } = Astro.props;
+const {
+  title,
+  description = "Premium relationship consulting for men who refuse to settle.",
+  schema = []
+} = Astro.props;
+
+const siteUrl = "https://pickupmaster.pro";
 ---
 
 <!doctype html>
@@ -13,11 +20,32 @@ const { title, description = "Premium relationship consulting for men who refuse
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:site_name" content="Pickupmaster" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={siteUrl} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <title>{title}</title>
+
+    {schema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body class="min-h-screen">
     <slot />

@@ -8,9 +8,300 @@ import Offers from '../components/Offers.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import ContactForm from '../components/ContactForm.astro';
+
+const siteUrl = "https://pickupmaster.pro";
+
+const schemaWebSite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Pickupmaster",
+  url: siteUrl,
+  description: "Premium relationship consulting for men who refuse to settle.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const schemaPerson = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pickupmaster",
+  url: siteUrl,
+  jobTitle: "Relationship Consultant",
+  description: "Premium relationship coach helping men master dating, attraction, and complex relationship situations.",
+  knowsAbout: [
+    "Dating Strategy",
+    "Relationship Psychology",
+    "Male Confidence Building",
+    "Attraction & Communication",
+    "Conflict Resolution"
+  ],
+  sameAs: [
+    "https://t.me/",
+    "https://instagram.com/"
+  ]
+};
+
+const schemaProfessionalService = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Pickupmaster — Premium Relationship Consulting",
+  url: siteUrl,
+  description: "Expert 1-on-1 relationship consulting for men. Text consultations, personal calls, and monthly guidance subscriptions.",
+  priceRange: "$$",
+  serviceType: "Relationship Consulting",
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide"
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Consulting Packages",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Text Consultation",
+        itemListElement: [{
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Text Consultation",
+            description: "Chat-based guidance with message analysis. Send the conversation — get exact strategy on what to say next."
+          }
+        }]
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "1-on-1 Call",
+        itemListElement: [{
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Personal 1-on-1 Consultation",
+            description: "60-minute live strategy session with personalized action plan, body language coaching, and mindset recalibration."
+          }
+        }]
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Monthly Guidance",
+        itemListElement: [{
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Monthly Guidance Subscription",
+            description: "Full ongoing support: unlimited messaging, weekly strategy calls, real-time date coaching, and priority 24/7 response."
+          }
+        }]
+      }
+    ]
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "500",
+    bestRating: "5",
+    worstRating: "1"
+  }
+};
+
+const schemaServices = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Relationship Consulting Services",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "Service",
+        name: "Meet & Communicate",
+        description: "Learn how to approach, open, and hold captivating conversations that make her want more.",
+        provider: { "@type": "Person", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "Service",
+        name: "Magnetic Mindset",
+        description: "Build the inner frame that makes women feel safe, excited, and addicted to your energy.",
+        provider: { "@type": "Person", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "Service",
+        name: "Complex Relationship Situations",
+        description: "Navigating jealousy, mixed signals, breakups, or love triangles — solved with surgical precision.",
+        provider: { "@type": "Person", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "Service",
+        name: "Make Her Fall in Love",
+        description: "Deep emotional connection strategies that create lasting desire beyond surface attraction.",
+        provider: { "@type": "Person", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
+        "@type": "Service",
+        name: "Creative Problem Solving",
+        description: "Unconventional relationship problems require unconventional strategies nobody else would think of.",
+        provider: { "@type": "Person", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      item: {
+        "@type": "Service",
+        name: "Any Situation Handling",
+        description: "No matter how unusual or impossible it seems — there is always a move to make.",
+        provider: { "@type": "Person", name: "Pickupmaster" }
+      }
+    }
+  ]
+};
+
+const schemaReviews = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Client Testimonials",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Alex K." },
+        reviewBody: "I went from getting ghosted constantly to having three women competing for my attention. The mindset shift alone was worth 10x the investment.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        itemReviewed: { "@type": "ProfessionalService", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Mark D." },
+        reviewBody: "He doesn't just tell you what to say — he rewires how you think about yourself. I finally understand what confidence actually means.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        itemReviewed: { "@type": "ProfessionalService", name: "Pickupmaster" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "Review",
+        author: { "@type": "Person", name: "James R." },
+        reviewBody: "Saved my marriage. I was ready to give up, but one session changed everything. The strategies are surgical — precise, effective, immediate.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        itemReviewed: { "@type": "ProfessionalService", name: "Pickupmaster" }
+      }
+    }
+  ]
+};
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What kind of relationship problems do you help with?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Everything — from approaching women and building attraction, to fixing broken relationships, handling jealousy, navigating breakups, and making her fall in love. No situation is too complex."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "How does the text consultation work?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Send me your conversation screenshots or describe your situation via chat. I analyze the dynamics, tell you exactly what to say next, and build a texting strategy tailored to your specific scenario. Response within 24 hours."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What happens during a 1-on-1 call?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A 60-minute deep dive into your situation. We cover personalized strategy, body language coaching, mindset recalibration, and build a step-by-step action plan. The session is recorded so you can review it anytime."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What does the monthly guidance subscription include?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Your personal wingman on speed dial. Unlimited messaging, weekly strategy calls, real-time date coaching, a structured skill development plan, and priority 24/7 response for any situation that comes up."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Is everything confidential?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "100% confidential. Every conversation, situation, and detail shared during consultations stays strictly between us. Your privacy is non-negotiable."
+      }
+    }
+  ]
+};
+
+const schemaWebPage = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Pickupmaster — Premium Relationship Consulting",
+  description: "Premium relationship consulting for men who refuse to settle. Master attraction, build confidence, and turn every interaction into an opportunity.",
+  url: siteUrl,
+  isPartOf: { "@type": "WebSite", name: "Pickupmaster", url: siteUrl },
+  about: { "@type": "Thing", name: "Relationship Consulting for Men" },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "h2", ".hero-description"]
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [{
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: siteUrl
+    }]
+  }
+};
+
+const allSchemas = [
+  schemaWebSite,
+  schemaWebPage,
+  schemaPerson,
+  schemaProfessionalService,
+  schemaServices,
+  schemaReviews,
+  schemaFAQ
+];
 ---
 
-<BaseLayout title="Pickupmaster — Premium Relationship Consulting">
+<BaseLayout
+  title="Pickupmaster — Premium Relationship Consulting"
+  description="Premium relationship consulting for men who refuse to settle. Master attraction, build confidence, and turn every interaction into an opportunity."
+  schema={allSchemas}
+>
   <Header />
   <main>
     <Hero />
