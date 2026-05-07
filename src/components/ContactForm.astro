@@ -18,7 +18,7 @@
       </p>
     </div>
 
-    <form class="space-y-6 reveal reveal-delay-2" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form class="space-y-6 reveal reveal-delay-2" id="contact-form">
       <div>
         <label for="name" class="block text-sm font-medium text-white/70 mb-2 tracking-wide uppercase">Name</label>
         <input
@@ -73,24 +73,33 @@
 
 <script>
   const form = document.getElementById("contact-form") as HTMLFormElement;
+  let isPending = false;
+
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (isPending) return;
+
     const btn = form.querySelector("button[type='submit']") as HTMLButtonElement;
     const btnText = btn.querySelector("span")!;
     const originalText = btnText.textContent;
 
+    isPending = true;
     btnText.textContent = "Sending...";
     btn.disabled = true;
 
+    const name = (form.querySelector("#name") as HTMLInputElement).value;
+    const contact = (form.querySelector("#contact-method") as HTMLInputElement).value;
+    const situation = (form.querySelector("#message") as HTMLTextAreaElement).value;
+
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch("/api/send-telegram", {
         method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, situation }),
       });
 
       if (res.ok) {
-        btnText.textContent = "Message Sent \u2713";
+        btnText.textContent = "Request sent. I'll contact you soon.";
         btn.classList.add("bg-green-600");
         btn.classList.remove("bg-accent");
         form.reset();
@@ -99,12 +108,13 @@
           btn.classList.remove("bg-green-600");
           btn.classList.add("bg-accent");
           btn.disabled = false;
-        }, 3000);
+          isPending = false;
+        }, 4000);
       } else {
         throw new Error("Failed");
       }
     } catch {
-      btnText.textContent = "Error — Try Again";
+      btnText.textContent = "Something went wrong. Please try again.";
       btn.classList.add("bg-red-600");
       btn.classList.remove("bg-accent");
       setTimeout(() => {
@@ -112,7 +122,8 @@
         btn.classList.remove("bg-red-600");
         btn.classList.add("bg-accent");
         btn.disabled = false;
-      }, 3000);
+        isPending = false;
+      }, 4000);
     }
   });
 </script>
